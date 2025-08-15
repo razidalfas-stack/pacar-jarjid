@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Untuk Kamu 💗</title>
+  <meta name="description" content="Sebuah halaman kecil penuh maaf dan cinta, dibuat khusus untukmu." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #ffd6e7;
+      --bg-2: #c9e7ff;
+      --bg-3: #f6e6ff;
+      --text: #1c1c1c;
+      --muted: #5b5b5b;
+      --card: rgba(255,255,255,0.5);
+      --glass: rgba(255,255,255,0.35);
+      --accent: #ff5ea8;
+      --accent-2: #7a6cff;
+      --ring: rgba(255, 94, 168, 0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      background: linear-gradient(120deg, var(--bg-1), var(--bg-2), var(--bg-3));
+      background-size: 180% 180%;
+      animation: gradientShift 16s ease-in-out infinite;
+      overflow-x:hidden;
+    }
+    @keyframes gradientShift{
+      0%{background-position: 0% 50%}
+      50%{background-position: 100% 50%}
+      100%{background-position: 0% 50%}
+    }
+
+    /* Floating soft shapes */
+    .blob{position:absolute; filter:blur(30px); opacity:.6; pointer-events:none;}
+    .blob.b1{width:450px;height:450px; background: radial-gradient(circle at 30% 30%, #ff9ac7, transparent 60%); top:-80px; left:-60px;}
+    .blob.b2{width:420px;height:420px; background: radial-gradient(circle at 70% 60%, #8ea7ff, transparent 60%); bottom:-100px; right:-40px;}
+
+    header{
+      position:relative;
+      min-height: 92vh;
+      display:grid;
+      place-items:center;
+      padding: clamp(16px, 4vw, 40px);
+      isolation:isolate;
+    }
+    .card{
+      width:min(980px, 96vw);
+      background:var(--card);
+      backdrop-filter: blur(14px) saturate(110%);
+      border:1px solid rgba(255,255,255,0.5);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+      padding: clamp(20px, 5vw, 48px);
+      position:relative;
+      overflow:hidden;
+    }
+    .sparkle{position:absolute; inset:0; background: radial-gradient(1200px 600px at var(--x,50%) var(--y,50%), rgba(255,255,255,0.6), transparent 70%); opacity:.25; pointer-events:none; mix-blend-mode:soft-light;}
+
+    .title{
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(42px, 9vw, 96px);
+      line-height:1.05;
+      margin:0 0 12px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .subtitle{
+      font-size: clamp(16px, 2.6vw, 22px);
+      color:var(--muted);
+      margin:0 0 26px;
+    }
+
+    .chip{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; background:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.9); box-shadow: var(--shadow); font-weight:600;}
+    .chip svg{width:20px;height:20px}
+
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
+    .btn{
+      appearance:none;
+      border:none;
+      padding:14px 20px;
+      border-radius:16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:white; font-weight:700; letter-spacing:.3px;
+      box-shadow:0 10px 20px rgba(122,108,255,.25), 0 8px 14px rgba(255,94,168,.25);
+      cursor:pointer; transform: translateY(0);
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .btn:active{transform: translateY(1px)}
+    .btn.secondary{background: rgba(255,255,255,0.9); color:#333; border:1px solid rgba(0,0,0,0.06)}
+
+    .typewriter{font-size: clamp(18px, 2.6vw, 24px); min-height:2.2em; white-space:nowrap; overflow:hidden; border-right:2px solid rgba(0,0,0,0.3)}
+
+    /* Sections */
+    section{padding: clamp(24px, 7vw, 64px) clamp(16px, 5vw, 40px)}
+    .grid{display:grid; gap:18px; grid-template-columns: repeat(12, 1fr)}
+    .col-12{grid-column:span 12}
+    .col-6{grid-column: span 12}
+    @media(min-width: 800px){ .col-6{grid-column: span 6} }
+
+    .note{
+      background: var(--glass);
+      border:1px solid rgba(255,255,255,0.65);
+      border-radius: 22px;
+      padding: clamp(16px, 4vw, 26px);
+      box-shadow: var(--shadow);
+    }
+    .note h3{margin:0 0 8px; font-size: clamp(22px, 3vw, 28px)}
+    .note p{margin:0; color:var(--muted); font-size: clamp(15px, 2.2vw, 18px);}
+
+    /* Floating hearts */
+    .hearts{position:fixed; inset:0; pointer-events:none; z-index:10}
+    .heart{position:absolute; width:20px; height:20px; transform:rotate(45deg); animation: floatUp linear forwards; opacity:0.9}
+    .heart::before,.heart::after{content:""; position:absolute; width:20px; height:20px; border-radius:50%}
+    .heart::before{left:-10px; background:inherit}
+    .heart::after{top:-10px; background:inherit}
+    @keyframes floatUp{
+      0%{transform: translateY(0) rotate(45deg) scale(0.8); opacity:0}
+      10%{opacity:1}
+      90%{opacity:1}
+      100%{transform: translateY(-120vh) rotate(45deg) scale(1.1); opacity:0}
+    }
+
+    /* Footer */
+    footer{padding: 26px; text-align:center; color:#333a;}
+
+    /* Ring focus */
+    .btn:focus-visible{outline:none; box-shadow: 0 0 0 8px var(--ring)}
+
+    /* Small decorative divider */
+    .divider{height:2px; background:linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent); margin: 24px 0}
+
+    /* Image placeholders (optional) */
+    .ph{aspect-ratio: 16/10; border-radius: 16px; background:linear-gradient(135deg, rgba(255,255,255,.8), rgba(255,255,255,.5)); border:1px dashed rgba(0,0,0,.1); display:grid; place-items:center; color:#0008; font-weight:600}
+
+    /* Theme toggle (light / dusk) */
+    .theme-toggle{position: fixed; top:14px; right:14px; z-index:20}
+    .theme-toggle input{display:none}
+    .theme-toggle label{cursor:pointer; display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.8); border:1px solid rgba(0,0,0,.05); box-shadow: var(--shadow); font-size:14px;}
+    .theme-toggle svg{width:18px;height:18px}
+
+    /* Dusk theme */
+    body.dusk{
+      --bg-1:#17132a; --bg-2:#28183f; --bg-3:#3a2052; --text:#f2e9ff; --muted:#bfb5d9; --card:rgba(33,22,55,.6); --glass:rgba(31,18,53,.6); --accent:#ff72c6; --accent-2:#8e7bff; --ring: rgba(142, 123, 255, .35);
+    }
+    h1, h2, h3, p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Mobile kecil */
+@media (max-width: 480px) {
+  .title {
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.2;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: clamp(14px, 4vw, 18px);
+    text-align: center;
+  }
+  .card {
+    padding: 16px;
+  }
+  .cta {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 12px;
+    text-align: center;
+  }
+}
+
+/* Tablet sedang */
+@media (min-width: 481px) and (max-width: 799px) {
+  .title {
+    font-size: clamp(34px, 7vw, 56px);
+    text-align: center;
+  }
+  .subtitle {
+    text-align: center;
+  }
+  .col-6 {
+    grid-column: span 12;
+  }
+}
+
+/* Pastikan gambar atau elemen besar mengecil di layar kecil */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+  </style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+  <!-- Theme toggle -->
+  <div class="theme-toggle">
+    <input id="theme" type="checkbox" aria-label="Ubah tema">
+    <label for="theme" title="Ubah tema">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1ZM4 11a1 1 0 0 1 1 1 7 7 0 1 0 7-7 1 1 0 0 1-1-1 9 9 0 1 1-9 9 1 1 0 0 1 1-1Zm15.657-7.657a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 1 1-1.414-1.414L18.243 3.93a1 1 0 0 1 1.414 0ZM5.172 17.414a1 1 0 0 1 0 1.414L3.758 20.243a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0Z"/></svg>
+      Ubah tema
+    </label>
+  </div>
+
+  <header>
+    <div class="card" id="hero">
+      <div class="sparkle"></div>
+      <div class="chip" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.53C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+        Buat Pacar Bang Jarjid
+      </div>
+      <h1 class="title">Maapin aku yaa sayangkuu cintakuu</h1>
+      <p class="subtitle">Ini aku buatin kaya gini biar gak marah lagi hehe</p>
+
+      <div class="typewriter" id="typewriter" aria-live="polite"></div>
+
+      <div class="cta">
+        <button class="btn" id="apologyBtn">Ini klik gera sayangkuu cintakuu</button>
+        <button class="btn secondary" id="scrollBtn">Baca ↓</button>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="grid">
+      <div class="col-6">
+        <div class="note">
+          <h3>Ini buat sayangkuu cintakuu</h3>
+          <p>
+  Maapin aku yaa sayangkuu cintakuu soalnya tadi makan nya dikit sama ngebiarin sayangkuu cintakuu makan sendiri pokonya maapin aku yaa sayangkuu cintakuu cantiknya aku muahh muahh muahh, janji deh ngga akan gitu lagii 🙏
+          </p>
+          <div class="divider"></div>
+
+        </div>
+      </div>
+      <div class="col-6">
+<div class="note">
+  <h3>Foto sebagai permintaan maaf</h3>
+  <p></p>
+  <div class="grid" style="margin-top:12px; grid-template-columns: repeat(6, 1fr); gap:12px;">
+    <div style="grid-column: span 3;">
+      <img src="img/1.jpg" alt="Foto 1" class="gallery-img">
+    </div>
+    <div style="grid-column: span 3;">
+      <img src="img/2.jpg" alt="Foto 2" class="gallery-img">
+    </div>
+    <div style="grid-column: span 3;">
+      <img src="img/3.jpg" alt="Foto 3" class="gallery-img">
+    </div>
+    <div style="grid-column: span 3;">
+      <img src="img/4.jpg" alt="Foto 4" class="gallery-img">
+    </div>
+  </div>
+</div>
+
+      </div>
+      <div class="col-12">
+        <div class="note" style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.53C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+          <div>
+            <h3 style="margin:0 0 6px">Janji bang jarjid</h3>
+            <p style="margin:0" class="muted">Aku janji ngga akan gitu lagii 💗</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Dibuat oleh bang jarjid. © <span id="year"></span> | Untuk <span id="name">Apriliany</span>
+  </footer>
+
+  <!-- Hearts layer -->
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
+
+  <script>
+    // Typewriter phrases (ubah sesuai isi hatimu)
+    const phrases = [
+      "Maapin sayangkuu cintakuu pliss.",
+      "Aku nyesel",
+      "Ngga akan gitu lagi deh sayangkuu cintakuu janji nnti aku makan banyak."
+    ];
+
+    const tw = document.getElementById('typewriter');
+    let pIndex = 0, cIndex = 0, deleting = false;
+
+    function typeLoop(){
+      const current = phrases[pIndex];
+      if(!deleting){
+        tw.textContent = current.slice(0, ++cIndex);
+        if(cIndex === current.length){
+          deleting = true;
+          setTimeout(typeLoop, 1200);
+          return;
+        }
+      } else {
+        tw.textContent = current.slice(0, --cIndex);
+        if(cIndex === 0){
+          deleting = false; pIndex = (pIndex+1)%phrases.length;
+        }
+      }
+      setTimeout(typeLoop, deleting ? 30 : 60);
+    }
+    typeLoop();
+
+    // Hero sparkle follows mouse/touch
+    const sparkle = document.querySelector('.sparkle');
+    document.addEventListener('pointermove', (e)=>{
+      const rect = document.getElementById('hero').getBoundingClientRect();
+      const x = ((e.clientX - rect.left)/rect.width)*100;
+      const y = ((e.clientY - rect.top)/rect.height)*100;
+      sparkle.style.setProperty('--x', x+'%');
+      sparkle.style.setProperty('--y', y+'%');
+    });
+
+    // Theme toggle
+    const theme = document.getElementById('theme');
+    theme.addEventListener('change', ()=>{
+      document.body.classList.toggle('dusk', theme.checked);
+    });
+
+    // Scroll to next section
+    document.getElementById('scrollBtn').addEventListener('click', ()=>{
+      window.scrollTo({top: document.querySelector('section').offsetTop - 10, behavior:'smooth'});
+    });
+
+    // Hearts generator
+    const hearts = document.getElementById('hearts');
+    function spawnHeart(x, y, size, hue){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.style.left = (x - size/2) + 'px';
+      h.style.top = (y - size/2) + 'px';
+      h.style.width = h.style.height = size + 'px';
+      h.style.background = `linear-gradient(135deg, hsl(${hue}, 85%, 68%), hsl(${(hue+40)%360}, 85%, 68%))`;
+      const duration = 4000 + Math.random()*3000;
+      h.style.animationDuration = duration + 'ms';
+      h.style.filter = 'drop-shadow(0 6px 14px rgba(0,0,0,.18))';
+      hearts.appendChild(h);
+      setTimeout(()=> h.remove(), duration);
+    }
+
+    function burstHearts(cx, cy, count = 24){
+      for(let i=0;i<count;i++){
+        const angle = (Math.PI*2) * (i/count) + Math.random()*0.4;
+        const dist = 40 + Math.random()*80;
+        const x = cx + Math.cos(angle)*dist;
+        const y = cy + Math.sin(angle)*dist;
+        const size = 12 + Math.random()*22;
+        const hue = 320 + Math.random()*60;
+        spawnHeart(x, y, size, hue);
+      }
+    }
+
+    // Ambient hearts floating up
+    setInterval(()=>{
+      const x = Math.random()*window.innerWidth;
+      const y = window.innerHeight + 20;
+      const size = 10 + Math.random()*18;
+      const hue = 320 + Math.random()*60;
+      spawnHeart(x, y, size, hue);
+    }, 800);
+
+    // Click to burst hearts
+    const apologyBtn = document.getElementById('apologyBtn');
+    apologyBtn.addEventListener('click', (e)=>{
+      const rect = e.target.getBoundingClientRect();
+      const cx = rect.left + rect.width/2;
+      const cy = rect.top + rect.height/2;
+      burstHearts(cx, cy, 30);
+      apologyBtn.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.06)' },
+        { transform: 'scale(1)' }
+      ], { duration: 400, easing: 'cubic-bezier(.2,.8,.2,1)' });
+    });
+
+    // Footer year & optional name personalization via URL query ?nama=...
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const params = new URLSearchParams(location.search);
+    const nama = params.get('nama');
+    if(nama){
+      document.getElementById('name').textContent = nama;
+    }
+
+    // Accessibility: reduce motion preference
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function handleReduceMotion(e){
+      document.body.style.animationPlayState = e.matches ? 'paused' : 'running';
+    }
+    handleReduceMotion(mediaQuery);
+    mediaQuery.addEventListener('change', handleReduceMotion);
+  </script>
+</body>
+</html>
