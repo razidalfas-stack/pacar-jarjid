@@ -278,6 +278,21 @@ img, video {
       </div>
     </div>
   </section>
+<!-- Tambahkan di dalam <body>, sebelum penutup </body> -->
+<audio id="backsound" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
+</audio>
+
+<script>
+  // Memulai backsound saat user berinteraksi
+  document.addEventListener('click', function() {
+    const audio = document.getElementById('backsound');
+    if (audio.paused) {
+      audio.play().catch(err => console.log('Audio autoplay diblokir:', err));
+    }
+  }, { once: true });
+</script>
 
   <footer>
     Dibuat oleh bang jarjid. © <span id="year"></span> | Untuk <span id="name">Apriliany</span>
